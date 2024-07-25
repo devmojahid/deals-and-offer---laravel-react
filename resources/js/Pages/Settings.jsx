@@ -12,10 +12,19 @@ import {
   Button,
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 const Settings = () => {
   const { smUp } = useBreakpoints();
   return (
+    <>
+      <ul>
+        <li>
+          <Link href="/">Dashboard</Link>
+          <Link href="/settings">Settings</Link>
+        </li>
+      </ul>
+   
     <Page>
       <TitleBar title="Settings page" />
       <BlockStack gap={{ xs: "800", sm: "400" }}>
@@ -36,18 +45,19 @@ const Settings = () => {
             </BlockStack>
           </Box>
           <Card roundedAbove="sm">
-            <Form method="POST">
+            {/* <Form method="POST">
               <BlockStack gap="400">
                 <TextField label="App Name" name="name" />
                 <TextField label="App Description" name="description" />
                 <Button submit={true}>Save</Button>
               </BlockStack>
-            </Form>
+            </Form> */}
           </Card>
         </InlineGrid>
         {smUp ? <Divider /> : null}
       </BlockStack>
     </Page>
+    </>
   );
 };
 

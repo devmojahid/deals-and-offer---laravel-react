@@ -3,7 +3,7 @@ import "../css/app.css";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import ShopifyProvider from "./Components/ShopifyContext";
+import { ShopifyProvider } from "./Components/ShopifyContext";
 import ErrorBoundary from "./ErrorBoundary";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
@@ -18,20 +18,18 @@ createInertiaApp({
   setup({ el, App, props }) {
     if (import.meta.env.DEV) {
       createRoot(el).render(
-        // <ErrorBoundary>
-        //   <ShopifyProvider>
+        <ShopifyProvider>
         <App {...props} />
-        //   </ShopifyProvider>
-        // </ErrorBoundary>
+         </ShopifyProvider>
       );
       return;
     }
 
     hydrateRoot(
       el,
-      <ShopifyProvider>
-        <App {...props} />
-      </ShopifyProvider>
+      // <ShopifyProvider>
+      <App {...props} />
+      // </ShopifyProvider>
     );
   },
   progress: {

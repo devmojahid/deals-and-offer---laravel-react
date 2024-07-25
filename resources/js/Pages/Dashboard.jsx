@@ -1,7 +1,8 @@
-import React from "react";
-import { TitleBar } from "@shopify/app-bridge-react";
+import React, { useEffect } from 'react';
+// import { TitleBar } from "@shopify/app-bridge-react";
 import { useShopify } from "../Components/ShopifyContext";
 import { Head, Link, useForm } from "@inertiajs/react";
+import { TitleBar, NavigationMenu, ContextualSaveBar } from '@shopify/app-bridge-react';
 import {
   Box,
   Card,
@@ -14,10 +15,34 @@ import {
   useBreakpoints,
   Button,
 } from "@shopify/polaris";
+// import axios from '../AxiosInstance';
 
 const Dashboard = () => {
   const { smUp } = useBreakpoints();
-  // const { config } = useShopify();
+  
+  const { appBridge } = useShopify();
+  const [isDirty, setIsDirty] = useState(false);
+
+  useEffect(() => {
+      if (appBridge) {
+          const titleBarOptions = {
+              title: 'Dashboard',
+          };
+
+          TitleBar.create(appBridge, titleBarOptions);
+      }
+  }, [appBridge]);
+
+  const handleSave = () => {
+      // Handle save action
+      setIsDirty(false);
+  };
+
+  const handleDiscard = () => {
+      // Handle discard action
+      setIsDirty(false);
+  };
+
   return (
     <div>
       {/* inertia link in ul li taf */}

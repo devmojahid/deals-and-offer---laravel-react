@@ -15,6 +15,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- <script src="https://unpkg.com/@shopify/app-bridge@1.30.0/umd/index.js"></script>
+    <script>
+        window.appBridge = window['app-bridge'];
+        window.actions = window.appBridge.actions;
+    </script> --}}
 
     <!-- Scripts -->
     @routes
@@ -25,6 +30,10 @@
 
 <body class="font-sans antialiased">
     @inertia
+
+    <input type="hidden" id="apiKey" value="{{ config('shopify-app.api_key') }}">
+    <input type="hidden" id="shopOrigin" value="{{ Auth::user()->name }}">
+    <input type="hidden" id="host" value="{{ request('host') }}">
 </body>
 
 </html>
