@@ -18,11 +18,11 @@ createInertiaApp({
   setup({ el, App, props }) {
     if (import.meta.env.DEV) {
       createRoot(el).render(
-        <ErrorBoundary>
-          <ShopifyProvider>
-            <App {...props} />
-          </ShopifyProvider>
-        </ErrorBoundary>
+        // <ErrorBoundary>
+        //   <ShopifyProvider>
+        <App {...props} />
+        //   </ShopifyProvider>
+        // </ErrorBoundary>
       );
       return;
     }

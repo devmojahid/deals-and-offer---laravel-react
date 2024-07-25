@@ -1,7 +1,4 @@
 import React from "react";
-import { TitleBar } from "@shopify/app-bridge-react";
-import { useShopify } from "../Components/ShopifyContext";
-import { Head, Link, useForm } from "@inertiajs/react";
 import {
   Box,
   Card,
@@ -14,28 +11,13 @@ import {
   useBreakpoints,
   Button,
 } from "@shopify/polaris";
+import { TitleBar } from "@shopify/app-bridge-react";
 
-const Dashboard = () => {
+const Settings = () => {
   const { smUp } = useBreakpoints();
-  // const { config } = useShopify();
   return (
-    <div>
-      {/* inertia link in ul li taf */}
-
-      <ul>
-        <li>
-          <Link href="/">Dashboard</Link>
-          <Link href="/settings">Settings</Link>
-        </li>
-      </ul>
-
-      <TitleBar title="Dashboard" />
-      <h1>Dashboard</h1>
-      <p>
-        Welcome to the dashboard! You're connected to the Shopify store with the
-        {/* domain <strong>{config.shopOrigin}</strong>. */}
-        {/* <p>You are: {config.shopOrigin}</p> */}
-      </p>
+    <Page>
+      <TitleBar title="Settings page" />
       <BlockStack gap={{ xs: "800", sm: "400" }}>
         <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
           <Box
@@ -54,19 +36,19 @@ const Dashboard = () => {
             </BlockStack>
           </Box>
           <Card roundedAbove="sm">
-            {/* <Form method="POST">
+            <Form method="POST">
               <BlockStack gap="400">
                 <TextField label="App Name" name="name" />
                 <TextField label="App Description" name="description" />
                 <Button submit={true}>Save</Button>
               </BlockStack>
-            </Form> */}
+            </Form>
           </Card>
         </InlineGrid>
         {smUp ? <Divider /> : null}
       </BlockStack>
-    </div>
+    </Page>
   );
 };
 
-export default Dashboard;
+export default Settings;
